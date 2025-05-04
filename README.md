@@ -46,7 +46,7 @@ Each subproject includes its own `Makefile` for convenience.
 
 > ℹ️ Before running, make sure to create `env.make` files from the provided `env.make.sample` files in the following directories:  
 > `local_env/`, `backend/`, and `frontend/`.  
-> Also create a `.env` file in the `backend/` folder from the provided `.env.sample`.
+> Also create `.env` files from the provided `.env.sample` files in both the `backend/` and `frontend/` folders.
 
 The local environment uses Docker Compose to start both backend and frontend.
 
