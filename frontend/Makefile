@@ -77,6 +77,10 @@ help:: ##@Other	Show this help.
 # NPM
 ##########################################################################
 
+.PHONY: npm-install
+npm-install: ##@NPM 	Install frontend dependencies
+	npm install
+
 .PHONY: npm-start
 npm-start: ##@NPM 	Start React dev server
 	npm start
