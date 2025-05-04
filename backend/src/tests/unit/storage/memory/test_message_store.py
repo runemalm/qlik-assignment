@@ -6,10 +6,7 @@ from app.infra.storage.memory.memory_message_store import MemoryMessageStore
 
 def create_fake_message(text: str = "Hello", is_palindrome: bool = False) -> Message:
     return Message(
-        id=uuid4(),
-        text=text,
-        is_palindrome=is_palindrome,
-        created_at=datetime.utcnow()
+        id=uuid4(), text=text, is_palindrome=is_palindrome, created_at=datetime.utcnow()
     )
 
 

@@ -3,6 +3,7 @@ from src.app.main import app
 
 client = TestClient(app)
 
+
 def test_create_and_get_message():
     response = client.post("/messages", json={"text": "Racecar"})
     assert response.status_code == 201
@@ -15,6 +16,7 @@ def test_create_and_get_message():
     assert result["text"] == "Racecar"
     assert result["is_palindrome"] is True
 
+
 def test_list_messages():
     client.post("/messages", json={"text": "Level"})
     client.post("/messages", json={"text": "Not a palindrome"})
@@ -24,6 +26,7 @@ def test_list_messages():
     messages = response.json()
     assert isinstance(messages, list)
     assert len(messages) >= 2
+
 
 def test_delete_message():
     response = client.post("/messages", json={"text": "Madam"})

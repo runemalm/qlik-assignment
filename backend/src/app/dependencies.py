@@ -5,8 +5,10 @@ from app.domain.services.message_service import MessageService
 message_store = MemoryMessageStore()
 message_service = MessageService()
 
+
 def get_message_store() -> IMessageStore:
     return message_store
+
 
 def get_message_service() -> MessageService:
     return message_service
