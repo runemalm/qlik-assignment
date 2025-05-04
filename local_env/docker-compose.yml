@@ -16,7 +16,7 @@ services:
   frontend:
     build:
       context: ../frontend
+      args:
+        REACT_APP_BACKEND_BASE_URL: http://localhost:8000
     ports:
       - "3000:80"  # Map frontend to port 80 inside the nginx container
-    environment:
-      - REACT_APP_BACKEND_BASE_URL=http://backend:8000
