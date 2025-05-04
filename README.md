@@ -90,8 +90,8 @@ Common tasks per subproject:
 ```bash
 make pipenv-install          # Install dependencies
 make pipenv-run              # Run the app locally
-make pipenv-lint             # Lint Python code with flake8
-make pipenv-format           # Format Python code with black
+make pipenv-flake            # Lint Python code with flake8
+make pipenv-black            # Format Python code with black
 make pipenv-test             # Run all tests (unit + integration)
 make pipenv-test-unit        # Run unit tests
 make pipenv-test-integration # Run integration tests
@@ -220,8 +220,8 @@ The codebase includes linting and formatting tools for both backend and frontend
 
 - **Backend (Python)**: Uses `flake8` for linting and `black` for formatting.
   ```bash
-  make pipenv-lint      # Lint Python code
-  make pipenv-format    # Auto-format Python code with black
+  make pipenv-flake     # Lint Python code
+  make pipenv-black     # Auto-format Python code with black
   ```
 
 - **Frontend (React/JS)**: Uses `eslint` for linting and `prettier` for formatting.

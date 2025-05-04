@@ -103,8 +103,8 @@ pipenv-test-unit: ##@Pipenv 	Run unit tests only
 pipenv-test-integration: ##@Pipenv 	Run integration tests only
 	pipenv run pytest src/tests/integration
 
-.PHONY: pipenv-lint
-pipenv-lint: ##@Pipenv 	Lint code with flake8
+.PHONY: pipenv-flake
+pipenv-flake: ##@Pipenv 	Lint code with flake8
 	pipenv run flake8 .
 
 .PHONY: pipenv-black
