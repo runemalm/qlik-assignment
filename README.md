@@ -1,4 +1,5 @@
 
+
 # Palindrome Checker App
 
 A full-stack application that lets users submit words and checks if they are palindromes.  
@@ -84,6 +85,8 @@ Common tasks per subproject:
 ```bash
 make pipenv-install          # Install dependencies
 make pipenv-run              # Run the app locally
+make pipenv-lint             # Lint Python code with flake8
+make pipenv-format           # Format Python code with black
 make pipenv-test             # Run all tests (unit + integration)
 make pipenv-test-unit        # Run unit tests
 make pipenv-test-integration # Run integration tests
@@ -94,6 +97,8 @@ make azure-deploy            # Deploy to Azure Container Apps
 
 ```bash
 make npm-start           # Start frontend in dev mode
+make npm-lint            # Lint frontend code with ESLint
+make npx-format          # Format frontend code with Prettier
 make npm-build           # Build production bundle
 make azure-deploy        # Deploy to Azure Static Web Apps
 ```
@@ -201,6 +206,26 @@ The backend follows clean architecture principles for clarity, testability, and 
 - **Dependency injection** is used explicitly in route handlers to construct actions and services, keeping components loosely coupled and easy to test.
 
 This structure allows for easy replacement of infrastructure (e.g., swapping in a database-backed store) while keeping the core logic untouched.
+
+---
+
+## 🧹 Code Formatting & Linting
+
+The codebase includes linting and formatting tools for both backend and frontend:
+
+- **Backend (Python)**: Uses `flake8` for linting and `black` for formatting.
+  ```bash
+  make pipenv-lint      # Lint Python code
+  make pipenv-format    # Auto-format Python code with black
+  ```
+
+- **Frontend (React/JS)**: Uses `eslint` for linting and `prettier` for formatting.
+  ```bash
+  make npm-lint          # Lint frontend code
+  make npx-format        # Format frontend code
+  ```
+
+Consistent code style can be enforced across the project to maintain clarity.
 
 ---
 
