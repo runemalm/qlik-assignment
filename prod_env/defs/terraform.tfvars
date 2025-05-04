@@ -1,0 +1,5 @@
+subscription_id         = "64193e42-3bf9-4966-b144-3fe9780eded7"
+location                = "northeurope"
+resource_group_name     = "qlikpalindrom"
+acr_name                = "qlikpalindrom"
+storage_account_name    = "qlikpalindrom"
