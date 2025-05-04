@@ -1,6 +1,8 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-from app.api.routes import router
+from app.api.routes.messages import router
+from app.domain.model.errors import MessageNotFoundError, ValidationError
 
 app = FastAPI(
     title="Palindrome Checker API",
@@ -17,3 +19,24 @@ app.add_middleware(
 )
 
 app.include_router(router)
+
+@app.exception_handler(MessageNotFoundError)
+async def message_not_found_handler(request: Request, exc: MessageNotFoundError):
+    return JSONResponse(
+        status_code=404,
+        content={"detail": str(exc) or "Message not found"},
+    )
+
+@app.exception_handler(ValidationError)
+async def validation_error_handler(request: Request, exc: ValidationError):
+    return JSONResponse(
+        status_code=400,
+        content={"detail": str(exc) or "Validation error"},
+    )
+
+@app.exception_handler(Exception)
+async def generic_exception_handler(request: Request, exc: Exception):
+    return JSONResponse(
+        status_code=500,
+        content={"detail": "An unexpected error occurred."}
+    )

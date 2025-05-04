@@ -18,7 +18,7 @@ The app provides a REST API and a simple UI for interacting with stored messages
 - Make (optional, but recommended)
 - Python 3.11.6 + Pipenv
 - Node.js
-- PyEnv (optional)
+- PyEnv (optional, but recommended)
 
 ---
 
@@ -27,7 +27,7 @@ The app provides a REST API and a simple UI for interacting with stored messages
 ```
 .
 ├── backend/         # FastAPI backend service
-├── frontend/        # React-based frontend
+├── frontend/        # React frontend service
 ├── local_env/       # Local Docker Compose setup
 ├── prod_env/        # Production infrastructure (Terraform on Azure)
 ├── Makefile         # Top-level common tasks
@@ -156,6 +156,8 @@ Available once backend is running:
 
 - Swagger UI: `http://localhost:8000/docs`
 - OpenAPI JSON: `http://localhost:8000/openapi.json`
+
+> Live docs is available at: [https://qlik-backend.orangesky-3031b73d.northeurope.azurecontainerapps.io/docs](https://qlik-backend.orangesky-3031b73d.northeurope.azurecontainerapps.io/docs)
 
 ### Endpoints
 

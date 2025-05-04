@@ -83,6 +83,10 @@ help:: ##@Other 	Show this help.
 # PIPENV
 ##########################################################################
 
+.PHONY: pipenv-install-dev
+pipenv-install-dev: ##@Pipenv 	Install all packages including dev dependencies
+	pipenv install --dev
+
 .PHONY: pipenv-run
 pipenv-run: ##@Pipenv 	Run FastAPI with Uvicorn
 	PYTHONPATH=src pipenv run uvicorn src.app.main:app --reload --host 0.0.0.0 --port 8000
@@ -90,6 +94,14 @@ pipenv-run: ##@Pipenv 	Run FastAPI with Uvicorn
 .PHONY: pipenv-test
 pipenv-test: ##@Pipenv 	Run tests
 	pipenv run pytest
+
+.PHONY: pipenv-test-unit
+pipenv-test-unit: ##@Pipenv 	Run unit tests only
+	pipenv run pytest src/tests/unit
+
+.PHONY: pipenv-test-integration
+pipenv-test-integration: ##@Pipenv 	Run integration tests only
+	pipenv run pytest src/tests/integration
 
 .PHONY: pipenv-lint
 pipenv-lint: ##@Pipenv 	Lint code with flake8
