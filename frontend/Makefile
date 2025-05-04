@@ -83,7 +83,6 @@ npm-start: ##@NPM 	Start React dev server
 
 .PHONY: npm-build
 npm-build: ##@NPM 	Build React app
-	npm run build
 	REACT_APP_BACKEND_BASE_URL=$(BACKEND_BASE_URL) npm run build
 
 .PHONY: npm-lint
@@ -93,26 +92,6 @@ npm-lint: ##@NPM 	Lint frontend code
 .PHONY: npx-format
 npx-format: ##@NPM 	Format frontend code
 	npx prettier --write .
-
-##########################################################################
-# DOCKER
-##########################################################################
-
-.PHONY: docker-build
-docker-build: ##@Docker 	Build Docker image for frontend
-	docker build -f $(DOCKERFILE) -t $(AZURE_IMAGE_URI) $(DOCKER_BUILD_CONTEXT)
-
-.PHONY: docker-push
-docker-push: ##@Docker 	Push frontend image to registry
-	docker push $(AZURE_IMAGE_URI)
-
-.PHONY: docker-start
-docker-start: docker-stop ##@Docker 	Run frontend container on localhost
-	docker run -it --rm --name $(DOCKER_CONTAINER_NAME) -p 3000:80 $(AZURE_IMAGE_URI)
-
-.PHONY: docker-stop
-docker-stop: ##@Docker 	Stop and remove frontend container if running
-	@docker stop $(DOCKER_CONTAINER_NAME) 2>/dev/null || true
 
 ##########################################################################
 # AZURE
