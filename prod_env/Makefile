@@ -64,31 +64,35 @@ help:: ##@Other Show this help.
 
 .PHONY: terraform-init
 terraform-init: ##@Terraform 	Initialize Terraform
-	terraform init
+	terraform -chdir=defs init
+
+.PHONY: terraform-init-reconfigure
+terraform-init-reconfigure: ##@Terraform 	Reinitialize Terraform backend
+	terraform -chdir=defs init -reconfigure
 
 .PHONY: terraform-validate
 terraform-validate: ##@Terraform 	Validate Terraform configuration
-	terraform validate
+	terraform -chdir=defs validate
 
 .PHONY: terraform-plan
 terraform-plan: ##@Terraform 	Show Terraform plan
-	terraform plan -var-file=terraform.tfvars
+	terraform -chdir=defs plan -var-file=terraform.tfvars
 
 .PHONY: terraform-apply
 terraform-apply: ##@Terraform 	Apply Terraform plan
-	terraform apply -var-file=terraform.tfvars
+	terraform -chdir=defs apply -var-file=terraform.tfvars
 
 .PHONY: terraform-destroy
 terraform-destroy: ##@Terraform 	Destroy Terraform-managed resources
-	terraform destroy -var-file=terraform.tfvars
+	terraform -chdir=defs destroy -var-file=terraform.tfvars
 
 .PHONY: terraform-refresh
 terraform-refresh: ##@Terraform 	Refresh local state from cloud
-	terraform refresh -var-file=terraform.tfvars
+	terraform -chdir=defs refresh -var-file=terraform.tfvars
 
 .PHONY: terraform-output
 terraform-output: ##@Terraform 	Show Terraform outputs
-	terraform output
+	terraform -chdir=defs output
 
 .PHONY: terraform-clean
 terraform-clean: ##@Terraform 	Remove local state/cache
