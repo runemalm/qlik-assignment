@@ -8,20 +8,15 @@ services:
       - "8000:8000"
     env_file:
       - ../backend/.env
-    volumes:
-      - ../backend:/app
-    command: uvicorn src.app.main:app --host 0.0.0.0 --port 8000 --reload
+    environment:
+      - PYTHONPATH=src
+    depends_on:
+      - frontend
 
   frontend:
     build:
       context: ../frontend
     ports:
-      - "3000:3000"
-    volumes:
-      - ../frontend:/app
-    stdin_open: true
-    tty: true
+      - "3000:80"  # Map frontend to port 80 inside the nginx container
     environment:
-      - CHOKIDAR_USEPOLLING=true
       - REACT_APP_BACKEND_BASE_URL=http://backend:8000
-    command: npm start

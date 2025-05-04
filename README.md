@@ -1,3 +1,4 @@
+
 # Palindrome Checker App
 
 A full-stack application that lets users submit words and checks if they are palindromes.  
@@ -81,10 +82,12 @@ Common tasks per subproject:
 ### `backend/`
 
 ```bash
-make pipenv-install      # Install dependencies
-make pipenv-run          # Run the app locally
-make pipenv-test         # Run backend tests
-make azure-deploy        # Deploy to Azure
+make pipenv-install        # Install dependencies
+make pipenv-run            # Run the app locally
+make pipenv-test           # Run all tests (unit + integration)
+make pipenv-test-unit        # Run unit tests
+make pipenv-test-integration # Run integration tests
+make azure-deploy          # Deploy to Azure
 ```
 
 ### `frontend/`
@@ -127,6 +130,7 @@ sequenceDiagram
 
   User->>Frontend: Submit message
   Frontend->>Backend: POST /messages
+  Backend->>Backend: Check palindrome
   Backend->>Store: Save message
   Store-->>Backend: Message ID
   Backend-->>Frontend: 201 Created
@@ -134,13 +138,13 @@ sequenceDiagram
   User->>Frontend: View all messages
   Frontend->>Backend: GET /messages
   Backend->>Store: Retrieve messages
-  Backend-->>Frontend: List of messages
+  Store-->>Backend: Messages
+  Backend-->>Frontend: 200 List of messages
 
   User->>Frontend: View message details
   Frontend->>Backend: GET /messages/{id}
-  Backend->>Store: Fetch message
-  Backend->>Backend: Check palindrome
-  Backend-->>Frontend: Message + result
+  Backend->>Store: Get message
+  Backend-->>Frontend: 200 Message
 
   User->>Frontend: Delete message
   Frontend->>Backend: DELETE /messages/{id}
@@ -167,6 +171,36 @@ Available once backend is running:
 | GET    | `/messages`        | List all submitted messages         |
 | GET    | `/messages/{id}`   | Retrieve message + palindrome check |
 | DELETE | `/messages/{id}`   | Delete a specific message           |
+
+---
+
+## 🧪 Tests
+
+All backend tests are run using `make` targets from the `backend/` directory:
+
+```bash
+make pipenv-test             # Run all tests (unit + integration)
+make pipenv-test-unit        # Run only unit tests
+make pipenv-test-integration # Run only integration tests
+```
+
+Unit tests cover domain logic and use case actions.  
+Integration tests verify the full REST API using FastAPI’s `TestClient`.
+
+No external infrastructure is required — all tests use in-memory components.
+
+---
+
+## 🧱 Clean Code & Architecture
+
+The backend follows clean architecture principles for clarity, testability, and separation of concerns:
+
+- **Actions** encapsulate application use cases (one per route).
+- **Domain services** contain business logic (`MessageService`).
+- **Stores** abstract persistence behind an interface (`IMessageStore`).
+- **Dependency injection** is used explicitly in route handlers to construct actions and services, keeping components loosely coupled and easy to test.
+
+This structure allows for easy replacement of infrastructure (e.g., swapping in a database-backed store) while keeping the core logic untouched.
 
 ---
 
