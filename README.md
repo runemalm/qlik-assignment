@@ -10,6 +10,9 @@ The app provides a REST API and a simple UI for interacting with stored messages
 **Frontend**: [https://qlikpalindrom.z16.web.core.windows.net/](https://qlikpalindrom.z16.web.core.windows.net/)  
 **API Docs**: [https://qlik-backend.orangesky-3031b73d.northeurope.azurecontainerapps.io/docs](https://qlik-backend.orangesky-3031b73d.northeurope.azurecontainerapps.io/docs)
 
+> ⚠️ **Note:** The backend runs on [Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/), which may scale down to zero after periods of inactivity.  
+> This means the first request after some idle time may take a few seconds due to cold start.
+
 ---
 
 ## 🧰 Requirements
