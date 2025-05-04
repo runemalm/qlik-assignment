@@ -107,8 +107,8 @@ pipenv-test-integration: ##@Pipenv 	Run integration tests only
 pipenv-lint: ##@Pipenv 	Lint code with flake8
 	pipenv run flake8 .
 
-.PHONY: pipenv-format
-pipenv-format: ##@Pipenv 	Format code with black
+.PHONY: pipenv-black
+pipenv-black: ##@Pipenv 	Format code with black
 	pipenv run black .
 
 .PHONY: pipenv-shell
