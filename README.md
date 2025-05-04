@@ -1,5 +1,3 @@
-
-
 # Palindrome Checker App
 
 A full-stack application that lets users submit words and checks if they are palindromes.  
@@ -42,6 +40,10 @@ Each subproject includes its own `Makefile` for convenience.
 ---
 
 ## ▶️ Run the App Locally
+
+> ℹ️ Before running, make sure to create `env.make` files from the provided `env.make.sample` files in the following directories:  
+> `local_env/`, `backend/`, and `frontend/`.  
+> Also create a `.env` file in the `backend/` folder from the provided `.env.sample`.
 
 The local environment uses Docker Compose to start both backend and frontend.
 
