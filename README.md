@@ -82,12 +82,12 @@ Common tasks per subproject:
 ### `backend/`
 
 ```bash
-make pipenv-install        # Install dependencies
-make pipenv-run            # Run the app locally
-make pipenv-test           # Run all tests (unit + integration)
+make pipenv-install          # Install dependencies
+make pipenv-run              # Run the app locally
+make pipenv-test             # Run all tests (unit + integration)
 make pipenv-test-unit        # Run unit tests
 make pipenv-test-integration # Run integration tests
-make azure-deploy          # Deploy to Azure
+make azure-deploy            # Deploy to Azure Container Apps
 ```
 
 ### `frontend/`
@@ -108,7 +108,7 @@ make compose-down        # Tear down local stack
 ### `prod_env/`
 
 ```bash
-make terraform-init      # Initialize Terraform
+make terraform-init      # Initialize Terraform (first time)
 make terraform-plan      # Show planned changes
 make terraform-apply     # Apply infrastructure changes
 ```
